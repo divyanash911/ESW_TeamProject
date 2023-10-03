@@ -17,7 +17,7 @@ void setup() {
   //initialise server client to send HTTP requests
   Serial.begin(115200);
   while (WiFi.status() != WL_CONNECTED) {
-    connectivity status
+    // connectivity status
       delay(1000);
     Serial.println("Connecting to WiFi...");
   }
@@ -60,7 +60,7 @@ void SendHTML() {
       <style>\
         body { font-family: Arial; text-align: center; margin:0px auto; padding-top: 30px;}\
         table { margin-left: auto; margin-right: auto; }\
-        td { padding: 8 px; }\
+        td { padding: 8px; }\
         .button {\
           background-color: #2f4468;\
           border: none;\
@@ -84,12 +84,13 @@ void SendHTML() {
     </head>\
     <body>\
       <h1>Hemingway Obstructronics</h1>\
-      <table>";
-  html += "<tr><td colspan=\"3\" align=\"center\"><a class='button button-on' href='https://api.thingspeak.com/update?api_key=";
+      <table>\
+        <tr><td colspan=\"3\" align=\"center\"><a class='button button-on' href='https://api.thingspeak.com/update?api_key=";
   html += apiKey;
   html += "&field5=1'>Forward</a></td></tr>";
-  html += "<tr><td align=\"center\"><button class=\"button\" onmousedown=\"toggleCheckbox('left', 1);\" ontouchstart=\"toggleCheckbox('left', 1);\" onmouseup=\"toggleCheckbox('stop', 0);\" ontouchend=\"toggleCheckbox('stop', 0);\">Left</button></td>
-          < td align =\"center\"><button class=\"button\" onmousedown=\"toggleCheckbox('stop', 0);\" ontouchstart=\"toggleCheckbox('stop', 0);\">Stop</button></td><td align=\"center\"><button class=\"button\" onmousedown=\"toggleCheckbox('right', 1);\" ontouchstart=\"toggleCheckbox('right', 1);\" onmouseup=\"toggleCheckbox('stop', 0);\" ontouchend=\"toggleCheckbox('stop', 0);\">Right</button></td></tr>";
+  html += "<tr><td align=\"center\"><button class=\"button\" onmousedown=\"toggleCheckbox('left', 1);\" ontouchstart=\"toggleCheckbox('left', 1);\" onmouseup=\"toggleCheckbox('stop', 0);\" ontouchend=\"toggleCheckbox('stop', 0);\">Left</button></td>";
+  html += "<td align=\"center\"><button class=\"button\" onmousedown=\"toggleCheckbox('stop', 0);\" ontouchstart=\"toggleCheckbox('stop', 0);\">Stop</button></td>";
+  html += "<td align=\"center\"><button class=\"button\" onmousedown=\"toggleCheckbox('right', 1);\" ontouchstart=\"toggleCheckbox('right', 1);\" onmouseup=\"toggleCheckbox('stop', 0);\" ontouchend=\"toggleCheckbox('stop', 0);\">Right</button></td></tr>";
   html += "<tr><td colspan=\"3\" align=\"center\"><a class='button button-on' href='https://api.thingspeak.com/update?api_key=";
   html += apiKey;
   html += "&field4=1'>Backward</a></td></tr></table>";
