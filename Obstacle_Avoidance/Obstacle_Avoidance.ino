@@ -5,7 +5,7 @@ const int echoPin_2 = 27;
 const int trigPin_3 = 26;
 const int echoPin_3 = 25;
 const float threshold = 10;
-const int irSensorPin1 = 2;
+const int irSensorPin1 = 15;
 const int irSensorPin2 = 21;
 
 
@@ -28,6 +28,7 @@ void loop() {
   int irSensorState1 = digitalRead(irSensorPin1);
   int irSensorState2 = digitalRead(irSensorPin2);
 
+  // Serial.println(irSensorState1);
   if (irSensorState1 == HIGH || irSensorState2 == HIGH) {
     flag_ir = 1;
     Serial.println("IR alert!");
@@ -35,16 +36,16 @@ void loop() {
 
   // if (distance1 < threshold) {
   //   flag_us = 1;
-  //   Serial.println("US Alert!");
+    Serial.println("US Alert!");
   // }
   flag_us=US_combined();
 
   if (flag_ir == 1 || flag_us == 1) {
-    Serial.println("Topale alert!");
-    Serial.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    // Serial.println("Topale alert!");
+    // Serial.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
   }
 
-  delay(100);
+  delay(2000);
 }
 
 
@@ -62,10 +63,11 @@ int US_combined()
   float distance1 = duration * 0.034 / 2;
   if (distance1 < threshold) {
     flag_ret = 1;
-    Serial.println("US_1 Alert!");
+    // Serial.println("US_1 Alert!");
   }
-
-
+  Serial.print("\n1: ");
+  Serial.print(distance1);
+  Serial.print(" \n");
   digitalWrite(trigPin_2, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin_2, HIGH);
@@ -76,8 +78,11 @@ int US_combined()
   float distance2 = duration * 0.034 / 2;
   if (distance2 < threshold) {
     flag_ret = 1;
-    Serial.println("US_2 Alert!");
+    // Serial.println("US_2 Alert!");
   }
+  // Serial.print("\n2: ");
+  // Serial.print(distance2);
+  // Serial.print(" \n");
 
   digitalWrite(trigPin_3, LOW);
   delayMicroseconds(2);
@@ -85,13 +90,16 @@ int US_combined()
   delayMicroseconds(10);
   digitalWrite(trigPin_3, LOW);
 
+
   duration = pulseIn(echoPin_3, HIGH);
   float distance3 = duration * 0.034 / 2;
   if (distance3 < threshold) {
     flag_ret = 1;
-    Serial.println("US_3 Alert!");
+    // Serial.println("US_3 Alert!");
   }
-
+  // Serial.print("\n3: ");
+  // Serial.print(distance3);
+  // Serial.print(" \n");
   return flag_ret;
 
 }
