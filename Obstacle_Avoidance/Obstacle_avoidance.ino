@@ -1,8 +1,8 @@
 const int trigPin_1 = 13;
 const int echoPin_1 = 12;
-const int trigPin_2 = 14;
-const int echoPin_2 = 27;
-const int trigPin_3 = 26;
+const int trigPin_2 = 32;
+const int echoPin_2 = 33;
+const int trigPin_3 = 35;
 const int echoPin_3 = 25;
 const float threshold = 10;
 const int irSensorPin1 = 2;
