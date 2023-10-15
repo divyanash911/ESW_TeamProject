@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button onclick="sendCommand('forward')">Forward</button>
+    <button onclick="sendCommand('backward')">Backward</button>
+    <button onclick="sendCommand('left')">Left</button>
+    <button onclick="sendCommand('right')">Right</button>
+
+    <script>
+        function sendCommand(command) {
+            // Send the command to the ESP32 via OM2M
+            const url = "http://your-om2m-server-ip:your-om2m-server-port/your-container";
+            const data = { command: command };
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+        }
+    </script>
+</body>
+</html>
