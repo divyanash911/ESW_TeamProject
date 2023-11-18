@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/aanvikbhatnagar/Desktop/ESW M23/ESW_TeamProject",
+      "program": "/Users/aanvikbhatnagar/Desktop/ESW M23/ESW_TeamProject/build/Debug/outDebug"
+    }
+  ]
+}

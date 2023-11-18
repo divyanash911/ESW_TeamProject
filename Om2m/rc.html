@@ -163,19 +163,25 @@
 <body>
     <nav>
         <a href="#" class="center-button">Center</a>
-        <a href="#" class="button top" onclick="sendCommand('forward')">Up</a>
-        <a href="#" class="button right" onclick="sendCommand('right')">Right</a>
-        <a href="#" class="button left" onclick="sendCommand('left')">Left</a>
-        <a href="#" class="button bottom" onclick="sendCommand('backward')">Down</a>
+        <a href="#" class="button top" onclick="sendCommand('Forward')">Up</a>
+        <a href="#" class="button right" onclick="sendCommand('Right')">Right</a>
+        <a href="#" class="button left" onclick="sendCommand('Left')">Left</a>
+        <a href="#" class="button bottom" onclick="sendCommand('Backward')">Down</a>
     </nav>
 
     <script>
-        function sendCommand(command) {
-   console.log("Command: " + command);
+        function sendCommand(command, value) {
+            console.log("Command: " + command + "   Value: " + value);
+
+            // Specify the target port
+            const targetPort = 5089; // Replace with your desired port
+
             // Send the command to the ESP32 via OM2M
-            const url = "http://your-om2m-server-ip:your-om2m-server-port/your-container";
-            const data = { command: command };
-            fetch(url, {
+            const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            let targetURL = `http://127.0.0.1:${targetPort}/~/in-cse/in-name/Remote_Control/${command}`;
+
+            const data = { command: command, value: value };
+            fetch(corsProxyUrl + targetURL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
