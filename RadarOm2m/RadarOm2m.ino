@@ -50,8 +50,8 @@ void loop() {
 
 
 
-  // Serial.print(pos);
-  // Serial.print(",");
+  Serial.print(pos);
+  Serial.print(",");
 
   // Send data to OM2M
     // HTTPClient http;
@@ -89,7 +89,7 @@ void om2mPublish(int fillpercent, int aqivalue) {
 
   String server = "http://" + String() + CSE_IP + ":" + String() + CSE_PORT + String() + OM2M_MN;
 
-  Serial.println(data);
+  // Serial.println(data);
   http.begin(server + String() + OM2M_AE + "/" + OM2M_DATA_CONT + "/");
 
   http.addHeader("X-M2M-Origin", OM2M_ORGIN);
@@ -105,7 +105,7 @@ void om2mPublish(int fillpercent, int aqivalue) {
                     + "\"cnf\": \"text\""
                     + "}}";
   int code = http.POST(req_data);
-  Serial.println(http.errorToString(code).c_str());
+  // Serial.println(http.errorToString(code).c_str());
   http.end();
 }
 
@@ -133,6 +133,6 @@ void readDistanceAsync() {
 
     // Print the distance
   }
-    // Serial.print(distance);
-    // Serial.print(".");
+    Serial.print(distance);
+    Serial.print(".");
 }
